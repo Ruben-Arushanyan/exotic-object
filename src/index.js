@@ -20,6 +20,8 @@ const isExoticObject = (value) => {
     return false
 }
 
+setDefault
+
 const exoticObject = (options={}) => {
     const handler = {
         apply(target, thisArg, argumentsList) {
@@ -56,9 +58,15 @@ const exoticObject = (options={}) => {
             if (property === isExoticObjectSymbol) {
                 return isExoticObjectSymbol
             }
+            if (property === Symbol.toPrimitive) {
+
+            }
+
+
             if (isFunction(options.get)) {
                 return options.get(target, property, receiver)
             }
+            console.log(property)
             syntaxError()
         },
         set(target, property, value, receiver) {
@@ -75,6 +83,7 @@ const exoticObject = (options={}) => {
 
 const obj = exoticObject()
 
+console.log(obj + '')
 
 module.exports = {
     exoticObject,
@@ -83,16 +92,3 @@ module.exports = {
 
 
 
-const o = {
-    a: {
-        b: {
-            c: undefined,
-            d: null,
-            e: 2,
-        }
-    },
-    f: undefined,
-}
-
-
-console.log(_has(o, 'a.b.c'))
