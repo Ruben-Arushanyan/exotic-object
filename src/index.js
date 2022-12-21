@@ -1,26 +1,12 @@
 const _has = require('lodash/has')
 const {
+    NOOP,
+    IS_EXOTIC,
     isObject,
     isFunction,
+    syntaxError,
+    isExoticObject,
 } = require('./utils')
-
-const syntaxError = () => {
-    throw Error('SyntaxError: invalid syntax')
-}
-const NOOP = function() {}
-
-const isExoticObjectSymbol = Symbol()
-
-const isExoticObject = (value) => {
-    if (isObject(value)) {
-        try {
-            return value[isExoticObjectSymbol] === isExoticObjectSymbol
-        } catch(err) {}
-    }
-    return false
-}
-
-setDefault
 
 const exoticObject = (options={}) => {
     const handler = {
@@ -55,8 +41,8 @@ const exoticObject = (options={}) => {
             syntaxError()
         },
         get(target, property, receiver) {
-            if (property === isExoticObjectSymbol) {
-                return isExoticObjectSymbol
+            if (property === IS_EXOTIC) {
+                return IS_EXOTIC
             }
             if (property === Symbol.toPrimitive) {
 
@@ -87,7 +73,6 @@ console.log(obj + '')
 
 module.exports = {
     exoticObject,
-    isExoticObject,
 }
 
 
