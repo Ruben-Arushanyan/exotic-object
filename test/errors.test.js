@@ -1,4 +1,7 @@
-import { OperationNotAllowedError } from '../.packed/errors'
+import { 
+    OperationNotAllowedError,
+    CallNotAllowedError,
+} from '../.packed/errors'
 
 test('OperationNotAllowedError', () => {
     {
@@ -33,6 +36,17 @@ test('OperationNotAllowedError', () => {
         })
         expect(error instanceof Error).toBe(true)
         expect(error.name).toBe('OperationNotAllowedError')
+        expect(error.message).toBe('Call is Not Allowed')
+    }
+})
+
+
+test('CallNotAllowedError', () => {
+    {
+        let error = new CallNotAllowedError()
+        expect(error instanceof Error).toBe(true)
+        expect(error instanceof OperationNotAllowedError).toBe(true)
+        expect(error.name).toBe('CallNotAllowedError')
         expect(error.message).toBe('Call is Not Allowed')
     }
 })

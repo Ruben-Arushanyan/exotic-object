@@ -20,4 +20,5 @@ class CallNotAllowedError extends OperationNotAllowedError {
 
 export {
     OperationNotAllowedError,
+    CallNotAllowedError,
 }
