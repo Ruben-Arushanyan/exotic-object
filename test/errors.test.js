@@ -49,4 +49,12 @@ test('CallNotAllowedError', () => {
         expect(error.name).toBe('CallNotAllowedError')
         expect(error.message).toBe('Call is Not Allowed')
     }
+
+    {
+        let error = new CallNotAllowedError({
+            message: "This is my custom message",
+        })
+        expect(error.name).toBe('CallNotAllowedError')
+        expect(error.message).toBe('This is my custom message')
+    }
 })
