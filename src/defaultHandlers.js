@@ -10,3 +10,5 @@ const defaultHandlers = {
     ...nativeHandlers,
 }
 
+export {defaultHandlers}
+

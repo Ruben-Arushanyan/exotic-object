@@ -6,6 +6,9 @@ const {
 const {
     OperationNotAllowedError,
 } = require('./errors')
+const {
+    defaultHandlers,
+} = require('./defaultHandlers')
 
 const {
     IS_EXOTIC,
@@ -13,7 +16,7 @@ const {
 } = require('./isExoticObject')
 
 const exoticObject = (options={}) => {
-    const handler = {
+    const handlers = {
         apply(target, thisArg, argumentsList) {
         },
         construct(target, argumentsList, newTarget) {
@@ -57,7 +60,7 @@ const exoticObject = (options={}) => {
         },
     }
 
-    return new Proxy(NOOP, handler)
+    return new Proxy(NOOP, handlers)
 }
 
 module.exports = {
