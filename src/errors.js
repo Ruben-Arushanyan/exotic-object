@@ -1,8 +1,10 @@
 
-const syntaxError = () => {
-    throw Error('SyntaxError: invalid syntax')
+class IncorrectOperationError extends Error {
+  constructor(message) {
+    super(message);
+  }
 }
 
 module.exports = {
-    syntaxError,
+    IncorrectOperationError,
 }
