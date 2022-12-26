@@ -3,6 +3,9 @@ const {
     NOOP,
     isFunction,
 } = require('./utils')
+const {
+    OperationNotAllowedError,
+} = require('./errors')
 
 const {
     IS_EXOTIC,
@@ -14,53 +17,52 @@ const exoticObject = (options={}) => {
         apply(target, thisArg, argumentsList) {
         },
         construct(target, argumentsList, newTarget) {
+            throw new OperationNotAllowedError()
         },
         defineProperty(target, property, descriptor) {
+            throw new OperationNotAllowedError()
         },
         deleteProperty(target, property) {
+            throw new OperationNotAllowedError()
         },
         getOwnPropertyDescriptor(target, prop) {
+            throw new OperationNotAllowedError()
         },
         getPrototypeOf(target) {
+            throw new OperationNotAllowedError()
         },
         has(target, prop) {
+            throw new OperationNotAllowedError()
         },
         isExtensible(target) {
+            throw new OperationNotAllowedError()
         },
         ownKeys(target) {
+            throw new OperationNotAllowedError()
         },
         preventExtensions(target) {
+            throw new OperationNotAllowedError()
         },
         get(target, property, receiver) {
             if (property === IS_EXOTIC) {
                 return IS_EXOTIC
             }
-            if (property === Symbol.toPrimitive) {
-
-            }
-
-
-            if (isFunction(options.get)) {
-                return options.get(target, property, receiver)
-            }
-            console.log(property)
+            throw new OperationNotAllowedError()
         },
         set(target, property, value, receiver) {
+            throw new OperationNotAllowedError()
         },
         setPrototypeOf(target, prototype) {
+            throw new OperationNotAllowedError()
         },
     }
 
     return new Proxy(NOOP, handler)
 }
 
-
-const obj = exoticObject()
-
-console.log(obj + '')
-
 module.exports = {
     exoticObject,
+    isExoticObject,
 }
 
 

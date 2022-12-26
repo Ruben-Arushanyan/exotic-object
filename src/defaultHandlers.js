@@ -5,6 +5,7 @@ const nativeHandlers = {
         throw new CallNotAllowedError()
     },
 }
+
 const defaultHandlers = {
     ...nativeHandlers,
 }

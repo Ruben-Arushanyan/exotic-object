@@ -12,7 +12,6 @@ const isFunction = (x) => {
 
 module.exports = {
     NOOP,
-
     isObject,
     isFunction,
 }
