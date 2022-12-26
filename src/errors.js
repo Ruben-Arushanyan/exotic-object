@@ -4,6 +4,7 @@ class OperationNotAllowedError extends Error {
     const operation = options?.operation ?? "Operation"
     const message = options?.message ?? `${operation} is Not Allowed`
     super(message)
+    this.name = "OperationNotAllowedError"
   }
 }
 
@@ -13,9 +14,10 @@ class CallNotAllowedError extends OperationNotAllowedError {
             message: options?.message,
             operation: "Call",
         });
+        this.name = "CallNotAllowedError"
     }
 }
 
-module.exports = {
-    IncorrectOperationError,
+export {
+    OperationNotAllowedError,
 }

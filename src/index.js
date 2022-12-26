@@ -1,9 +1,7 @@
 const _has = require('lodash/has')
 const {
     NOOP,
-    IS_EXOTIC,
     isFunction,
-    syntaxError,
 } = require('./utils')
 
 const {
@@ -46,13 +44,10 @@ const exoticObject = (options={}) => {
                 return options.get(target, property, receiver)
             }
             console.log(property)
-            syntaxError()
         },
         set(target, property, value, receiver) {
-            syntaxError()
         },
         setPrototypeOf(target, prototype) {
-            syntaxError()
         },
     }
 
