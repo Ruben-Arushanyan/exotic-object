@@ -17,45 +17,45 @@ const {
 
 const exoticObject = (options={}) => {
     const handlers = {
-        apply(target, thisArg, argumentsList) {
+        apply(_, thisArg, argumentsList) {
         },
-        construct(target, argumentsList, newTarget) {
+        construct(_, argumentsList, newTarget) {
             throw new OperationNotAllowedError()
         },
-        defineProperty(target, property, descriptor) {
+        defineProperty(_, property, descriptor) {
             throw new OperationNotAllowedError()
         },
-        deleteProperty(target, property) {
+        deleteProperty(_, property) {
             throw new OperationNotAllowedError()
         },
-        getOwnPropertyDescriptor(target, prop) {
+        getOwnPropertyDescriptor(_, prop) {
             throw new OperationNotAllowedError()
         },
-        getPrototypeOf(target) {
+        getPrototypeOf(_) {
             throw new OperationNotAllowedError()
         },
-        has(target, prop) {
+        has(_, prop) {
             throw new OperationNotAllowedError()
         },
-        isExtensible(target) {
+        isExtensible(_) {
             throw new OperationNotAllowedError()
         },
-        ownKeys(target) {
+        ownKeys(_) {
             throw new OperationNotAllowedError()
         },
-        preventExtensions(target) {
+        preventExtensions(_) {
             throw new OperationNotAllowedError()
         },
-        get(target, property, receiver) {
+        get(_, property, receiver) {
             if (property === IS_EXOTIC) {
                 return IS_EXOTIC
             }
             throw new OperationNotAllowedError()
         },
-        set(target, property, value, receiver) {
+        set(_, property, value, receiver) {
             throw new OperationNotAllowedError()
         },
-        setPrototypeOf(target, prototype) {
+        setPrototypeOf(_, prototype) {
             throw new OperationNotAllowedError()
         },
     }
