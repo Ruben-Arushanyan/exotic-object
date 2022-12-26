@@ -1,5 +1,5 @@
 
-const DEFAULT_HANDLERS = {
+const defaultHandlers = {
     call(target, thisArg, argumentsList) {
         syntaxError()
     },
