@@ -2,43 +2,36 @@ const _has = require('lodash/has')
 const {
     NOOP,
     IS_EXOTIC,
-    isObject,
     isFunction,
     syntaxError,
-    isExoticObject,
 } = require('./utils')
+
+const {
+    IS_EXOTIC,
+    isExoticObject,
+} = require('./isExoticObject')
 
 const exoticObject = (options={}) => {
     const handler = {
         apply(target, thisArg, argumentsList) {
-            syntaxError()
         },
         construct(target, argumentsList, newTarget) {
-            syntaxError()
         },
         defineProperty(target, property, descriptor) {
-            syntaxError()
         },
         deleteProperty(target, property) {
-            syntaxError()
         },
         getOwnPropertyDescriptor(target, prop) {
-            syntaxError()
         },
         getPrototypeOf(target) {
-            syntaxError()
         },
         has(target, prop) {
-            syntaxError()
         },
         isExtensible(target) {
-            syntaxError()
         },
         ownKeys(target) {
-            syntaxError()
         },
         preventExtensions(target) {
-            syntaxError()
         },
         get(target, property, receiver) {
             if (property === IS_EXOTIC) {
