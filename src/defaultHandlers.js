@@ -1,7 +1,11 @@
+import {CallNotAllowedError} from './errors'
 
-const defaultHandlers = {
+const nativeHandlers = {
     call(target, thisArg, argumentsList) {
-        syntaxError()
+        throw new CallNotAllowedError()
     },
+}
+const defaultHandlers = {
+    ...nativeHandlers,
 }
 
