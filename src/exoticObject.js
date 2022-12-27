@@ -7,13 +7,17 @@ import {
 import {
     IS_EXOTIC,
 } from './isExoticObject'
+import {
+    resolveOperationHandler,
+} from './resolveHandler'
 
 const exoticObject = (options={}) => {
     const target = options
 
     const handlers = {
         apply(_, thisArg, argumentsList) {
-            
+            const handler = resolveOperationHandler(target, 'call')
+            handler(target, argumentsList, thisArg)
         },
         construct(_, argumentsList, newTarget) {
             throw new OperationNotAllowedError()
