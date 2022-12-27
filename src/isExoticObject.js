@@ -1,4 +1,4 @@
-const {isObject} = require('./utils')
+import {isObject} from './utils'
 
 const IS_EXOTIC = Symbol()
 
@@ -11,7 +11,7 @@ const isExoticObject = (value) => {
     return false
 }
 
-module.exports = {
+export {
     isExoticObject,
     IS_EXOTIC,
 }

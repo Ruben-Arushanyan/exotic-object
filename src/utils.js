@@ -10,7 +10,7 @@ const isFunction = (x) => {
     return type === 'function'
 }
 
-module.exports = {
+export {
     NOOP,
     isObject,
     isFunction,
