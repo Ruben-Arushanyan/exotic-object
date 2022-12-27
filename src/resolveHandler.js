@@ -1,13 +1,24 @@
 import has from 'lodash.has'
+import {defaultHandlers} from './defaultHandlers'
 
-const resolveHandler = (target, ...args) => {
-    const [handlerName, property] = args
-    if (args.length === 1) {
-
+const resolveOperationHandler = (target, handlerName) => {
+    if (has(target, ['operation', handlerName])) {
+        return target.operation[handlerName]
     }
-    if (args.length === 2) {
-
-    }
+    return defaultHandlers[handlerName]
 }
 
-export {resolveHandler}
+const resolvePropertyOperationHandler = (target, handlerName, property) => {
+    if (has(target, ['propertyOperation', property, handlerName])) {
+        return target.propertyOperation[property][handlerName]
+    }
+    if (has(target, ['propertyOperation', '*', handlerName])) {
+        return target.propertyOperation['*'][handlerName]
+    }
+    return defaultHandlers[handlerName]
+}
+
+export {
+    resolveOperationHandler,
+    resolvePropertyOperationHandler,
+}
