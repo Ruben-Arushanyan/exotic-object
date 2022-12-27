@@ -3,9 +3,29 @@ import {
 } from '../.packed'
 
 
-test('CallNotAllowedError', () => {
+test('exoticObject', () => {
     {
         const e_o_1 = exoticObject()
-        // console.log(e_o_1)
+        const e_o_2 = exoticObject({
+            data: {name: "Ruben"},
+            operation: {
+                call: (target, argumentsList, thisArg) => {
+                   // ....
+                },
+            },
+            propertyOperation: {
+                title: {
+                  get: (target, property, receiver) => {
+                    // ...
+                  },
+                },
+                '*': {
+                   get: (target, property, receiver) => {
+                    // ...
+                  },
+                }
+              }
+        })
+
     }
 })
