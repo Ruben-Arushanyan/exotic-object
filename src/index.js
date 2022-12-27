@@ -16,8 +16,11 @@ const {
 } = require('./isExoticObject')
 
 const exoticObject = (options={}) => {
+    const target = options
+
     const handlers = {
         apply(_, thisArg, argumentsList) {
+            
         },
         construct(_, argumentsList, newTarget) {
             throw new OperationNotAllowedError()

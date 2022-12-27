@@ -1,7 +1,7 @@
 import {CallNotAllowedError} from './errors'
 
 const nativeHandlers = {
-    call(target, thisArg, argumentsList) {
+    call(target, argumentsList, thisArg) {
         throw new CallNotAllowedError()
     },
 }
