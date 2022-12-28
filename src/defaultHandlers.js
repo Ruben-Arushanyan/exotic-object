@@ -4,10 +4,10 @@ import {
 } from './errors'
 
 const nativeHandlers = {
-    call(target, argumentsList, thisArg) {
+    call(state, argumentsList, thisArg) {
         throw new CallNotAllowedError()
     },
-    toPrimitive(target, hint) {
+    toPrimitive(state, hint) {
         throw new ToPrimitiveNotAllowedError()
     },
 }

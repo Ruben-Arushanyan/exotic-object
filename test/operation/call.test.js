@@ -25,7 +25,7 @@ test('exoticObject call', () => {
     {
       const e_o = exoticObject({
         operation: {
-          call: (target, argumentsList, thisArg) => {
+          call: (state, argumentsList, thisArg) => {
             return argumentsList.reduce((sum, item) => sum + item, 0)
           }
         }
@@ -36,24 +36,24 @@ test('exoticObject call', () => {
   
     {
       const e_o = exoticObject({
-        data: {name: "Ruben"},
+        state: {name: "Ruben"},
         operation: {
-          call: (target, argumentsList, thisArg) => {
-            return target.data
+          call: (state, argumentsList, thisArg) => {
+            return state
           }
         }
       })
   
       expect(e_o()).toEqual({name: "Ruben"})
-      const data = e_o()
-      data.name = "abc"
+      const state = e_o()
+      state.name = "abc"
       expect(e_o()).toEqual({name: "abc"})
     }
   
     {
       const e_o = exoticObject({
         operation: {
-          call: (target, argumentsList, thisArg) => {
+          call: (state, argumentsList, thisArg) => {
             return thisArg
           }
         }

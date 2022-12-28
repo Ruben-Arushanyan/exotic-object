@@ -12,20 +12,18 @@ import {
 } from './resolveHandler'
 
 const exoticObject = (options={}) => {
-    const target = options
-
     const handlers = {
         apply(_, thisArg, argumentsList) {
-            const handler = resolveOperationHandler(target, 'call')
-            return handler(target, argumentsList, thisArg)
+            const handler = resolveOperationHandler(options, 'call')
+            return handler(options?.state, argumentsList, thisArg)
         },
         get(_, property, receiver) {
             if (property === IS_EXOTIC) {
                 return IS_EXOTIC
             }
             if (property === Symbol.toPrimitive) {
-                const handler = resolveOperationHandler(target, 'toPrimitive')
-                return (hint) => handler(target, hint)
+                const handler = resolveOperationHandler(options, 'toPrimitive')
+                return (hint) => handler(options?.state, hint)
             }
             throw new OperationNotAllowedError()
         },
