@@ -50,6 +50,10 @@ const exoticObject = (options={}) => {
             if (property === IS_EXOTIC) {
                 return IS_EXOTIC
             }
+            if (property === Symbol.toPrimitive) {
+                const handler = resolveOperationHandler(target, 'toPrimitive')
+                return handler
+            }
             throw new OperationNotAllowedError()
         },
         set(_, property, value, receiver) {
