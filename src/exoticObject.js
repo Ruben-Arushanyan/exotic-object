@@ -19,33 +19,6 @@ const exoticObject = (options={}) => {
             const handler = resolveOperationHandler(target, 'call')
             return handler(target, argumentsList, thisArg)
         },
-        construct(_, argumentsList, newTarget) {
-            throw new OperationNotAllowedError()
-        },
-        defineProperty(_, property, descriptor) {
-            throw new OperationNotAllowedError()
-        },
-        deleteProperty(_, property) {
-            throw new OperationNotAllowedError()
-        },
-        getOwnPropertyDescriptor(_, prop) {
-            throw new OperationNotAllowedError()
-        },
-        getPrototypeOf(_) {
-            throw new OperationNotAllowedError()
-        },
-        has(_, prop) {
-            throw new OperationNotAllowedError()
-        },
-        isExtensible(_) {
-            throw new OperationNotAllowedError()
-        },
-        ownKeys(_) {
-            throw new OperationNotAllowedError()
-        },
-        preventExtensions(_) {
-            throw new OperationNotAllowedError()
-        },
         get(_, property, receiver) {
             if (property === IS_EXOTIC) {
                 return IS_EXOTIC
@@ -57,6 +30,38 @@ const exoticObject = (options={}) => {
             throw new OperationNotAllowedError()
         },
         set(_, property, value, receiver) {
+            throw new OperationNotAllowedError()
+        },
+        deleteProperty(_, property) {
+            throw new OperationNotAllowedError()
+        },
+        has(_, prop) {
+            throw new OperationNotAllowedError()
+        },
+
+
+
+
+
+        construct(_, argumentsList, newTarget) {
+            throw new OperationNotAllowedError()
+        },
+        defineProperty(_, property, descriptor) {
+            throw new OperationNotAllowedError()
+        },
+        getOwnPropertyDescriptor(_, prop) {
+            throw new OperationNotAllowedError()
+        },
+        getPrototypeOf(_) {
+            throw new OperationNotAllowedError()
+        },
+        isExtensible(_) {
+            throw new OperationNotAllowedError()
+        },
+        ownKeys(_) {
+            throw new OperationNotAllowedError()
+        },
+        preventExtensions(_) {
             throw new OperationNotAllowedError()
         },
         setPrototypeOf(_, prototype) {
