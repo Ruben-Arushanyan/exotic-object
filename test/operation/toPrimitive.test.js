@@ -32,41 +32,13 @@ test('exoticObject toPrimitive', () => {
         expect(e_o + '').toBe("hello")
     }
 
-  
-    // {
-    //   const e_o = exoticObject({
-    //     data: {name: "Ruben"},
-    //     operation: {
-    //       call: (target, argumentsList, thisArg) => {
-    //         return target.data
-    //       }
-    //     }
-    //   })
-  
-    //   expect(e_o()).toEqual({name: "Ruben"})
-    //   const data = e_o()
-    //   data.name = "abc"
-    //   expect(e_o()).toEqual({name: "abc"})
-    // }
-  
-    // {
-    //   const e_o = exoticObject({
-    //     operation: {
-    //       call: (target, argumentsList, thisArg) => {
-    //         return thisArg
-    //       }
-    //     }
-    //   })
-  
-    //   expect(e_o()).toEqual(undefined)
-  
-    //   const obj = {
-    //     name: "Ruben",
-    //     __proto__: {
-    //       e_o,
-    //     }
-    //   }
-  
-    //   expect(obj.e_o()).toEqual({name: "Ruben"})
-    // }
+    {
+        const e_o = exoticObject({
+            data: {name: "Ruben"},
+            operation: {
+                toPrimitive: (target, hint) => target.data.name
+            }
+        })
+        expect(String(e_o)).toBe("Ruben")
+    }
 })
