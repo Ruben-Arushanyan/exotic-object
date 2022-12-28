@@ -18,7 +18,18 @@ class CallNotAllowedError extends OperationNotAllowedError {
     }
 }
 
+class ToPrimitiveNotAllowedError extends OperationNotAllowedError {
+  constructor(options) {
+      super({
+          message: options?.message,
+          operation: "ToPrimitive",
+      });
+      this.name = "ToPrimitiveNotAllowedError"
+  }
+}
+
 export {
     OperationNotAllowedError,
     CallNotAllowedError,
+    ToPrimitiveNotAllowedError,
 }

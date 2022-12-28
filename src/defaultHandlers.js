@@ -1,8 +1,14 @@
-import {CallNotAllowedError} from './errors'
+import {
+    CallNotAllowedError,
+    ToPrimitiveNotAllowedError,
+} from './errors'
 
 const nativeHandlers = {
     call(target, argumentsList, thisArg) {
         throw new CallNotAllowedError()
+    },
+    toPrimitive(hint) {
+        throw new ToPrimitiveNotAllowedError()
     },
 }
 
