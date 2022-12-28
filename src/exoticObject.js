@@ -52,7 +52,7 @@ const exoticObject = (options={}) => {
             }
             if (property === Symbol.toPrimitive) {
                 const handler = resolveOperationHandler(target, 'toPrimitive')
-                return handler
+                return (hint) => handler(target, hint)
             }
             throw new OperationNotAllowedError()
         },

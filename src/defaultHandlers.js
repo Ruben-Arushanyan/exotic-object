@@ -7,7 +7,7 @@ const nativeHandlers = {
     call(target, argumentsList, thisArg) {
         throw new CallNotAllowedError()
     },
-    toPrimitive(hint) {
+    toPrimitive(target, hint) {
         throw new ToPrimitiveNotAllowedError()
     },
 }
