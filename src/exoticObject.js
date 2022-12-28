@@ -17,7 +17,7 @@ const exoticObject = (options={}) => {
     const handlers = {
         apply(_, thisArg, argumentsList) {
             const handler = resolveOperationHandler(target, 'call')
-            handler(target, argumentsList, thisArg)
+            return handler(target, argumentsList, thisArg)
         },
         construct(_, argumentsList, newTarget) {
             throw new OperationNotAllowedError()
