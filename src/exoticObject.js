@@ -9,6 +9,7 @@ import {
 } from './isExoticObject'
 import {
     resolveOperationHandler,
+    resolvePropertyOperationHandler,
 } from './resolveHandler'
 
 const exoticObject = (options={}) => {
@@ -17,7 +18,7 @@ const exoticObject = (options={}) => {
             const handler = resolveOperationHandler(options, 'call')
             return handler(options?.state, argumentsList, thisArg)
         },
-        get(_, property, receiver) {
+        get(_, property) {
             if (property === IS_EXOTIC) {
                 return IS_EXOTIC
             }
@@ -25,7 +26,8 @@ const exoticObject = (options={}) => {
                 const handler = resolveOperationHandler(options, 'toPrimitive')
                 return (hint) => handler(options?.state, hint)
             }
-            throw new OperationNotAllowedError()
+            const handler = resolvePropertyOperationHandler(options, 'get', property)
+            return handler(options?.state, property)
         },
         set(_, property, value, receiver) {
             throw new OperationNotAllowedError()
