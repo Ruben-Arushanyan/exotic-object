@@ -3,6 +3,7 @@ import {
     CallNotAllowedError,
     ToPrimitiveNotAllowedError,
     GetNotAllowedError,
+    SetNotAllowedError,
 } from '../.packed/errors'
 
 test('OperationNotAllowedError', () => {
@@ -94,6 +95,24 @@ test('GetNotAllowedError', () => {
             message: "This is my custom message",
         })
         expect(error.name).toBe('GetNotAllowedError')
+        expect(error.message).toBe('This is my custom message')
+    }
+})
+
+test('SetNotAllowedError', () => {
+    {
+        let error = new SetNotAllowedError()
+        expect(error instanceof Error).toBe(true)
+        expect(error instanceof OperationNotAllowedError).toBe(true)
+        expect(error.name).toBe('SetNotAllowedError')
+        expect(error.message).toBe('Set is Not Allowed')
+    }
+
+    {
+        let error = new SetNotAllowedError({
+            message: "This is my custom message",
+        })
+        expect(error.name).toBe('SetNotAllowedError')
         expect(error.message).toBe('This is my custom message')
     }
 })
