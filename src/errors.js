@@ -38,9 +38,20 @@ class GetNotAllowedError extends OperationNotAllowedError {
   }
 }
 
+class SetNotAllowedError extends OperationNotAllowedError {
+  constructor(options) {
+      super({
+          message: options?.message,
+          operation: "Set",
+      });
+      this.name = "SetNotAllowedError"
+  }
+}
+
 export {
     OperationNotAllowedError,
     CallNotAllowedError,
     ToPrimitiveNotAllowedError,
     GetNotAllowedError,
+    SetNotAllowedError,
 }

@@ -2,6 +2,7 @@ import {
     CallNotAllowedError,
     ToPrimitiveNotAllowedError,
     GetNotAllowedError,
+    SetNotAllowedError,
 } from './errors'
 
 const nativeHandlers = {
@@ -13,7 +14,10 @@ const nativeHandlers = {
     },
     get(state, property) {
         throw new GetNotAllowedError()
-    }
+    },
+    set(state, value, property) {
+        throw new SetNotAllowedError()
+    },
 }
 
 const defaultHandlers = {
