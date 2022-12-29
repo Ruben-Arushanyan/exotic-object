@@ -30,7 +30,9 @@ const exoticObject = (options={}) => {
             return handler(options?.state, property)
         },
         set(_, property, value) {
-            throw new OperationNotAllowedError()
+            const handler = resolvePropertyOperationHandler(options, 'set', property)
+            handler(options?.state, value, property)
+            return true
         },
         deleteProperty(_, property) {
             throw new OperationNotAllowedError()
