@@ -2,7 +2,9 @@
 
 ## Description
 
-...
+In JavaScript, an **exotic object** is a type of object that has a non-standard behavior.
+
+With the help of this library, we can create **exotic objects** with **custom behavior** for each operation that will be applied to the object.
 
 
 ## Installation
