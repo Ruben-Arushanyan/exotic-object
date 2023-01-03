@@ -1,6 +1,6 @@
 {
   "name": "exotic-object",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "With the help of this library, in JavaScript, we can create exotic objects with custom behavior for each operation that will be applied to the object.",
   "license": "MIT",
   "homepage": "https://github.com/Ruben-Arushanyan/exotic-object",
