@@ -13,9 +13,28 @@ With the help of this library, we can create **exotic objects** with **custom be
 npm install exotic-object
 ```
 
-## Usage Example
+## Usage Examples
 
-...
+Let's create an exotic object with only the function **call** operator defined, and any other operation on the object will cause an error.
+
+```js
+const {exoticObject} = require('exotic-object');
+
+const obj = exoticObject({
+    operation: {
+        call: (state, arguments, thisArg) => {
+            return "I am the result of the call"
+        }
+    }
+});
+
+// correct usage
+const result = obj(); // "I am the result of the call"
+
+// wrong usage
+obj.abc = "Hello"; // SetNotAllowedError: Set is Not Allowed
+obj.abc;           // GetNotAllowedError: Get is Not Allowed
+```
 
 ## [Contributing](https://github.com/ruben-arushanyan/exotic-object/blob/master/CONTRIBUTING.md)
 
